@@ -9,6 +9,8 @@
     <title>
         Argon Dashboard 2 by Creative Tim
     </title>
+    <!--     Fonts and icons     -->
+    {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" /> --}}
     <!-- Nucleo Icons -->
     <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -69,7 +71,7 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="assets/js/argon-dashboard.js"></script>
-    @stack('js');
+    @stack('js')
 </body>
 
 </html>
