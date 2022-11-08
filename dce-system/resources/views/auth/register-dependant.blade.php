@@ -2,7 +2,7 @@
 
 @section('content')
     @include('layouts.navbars.guest.navbar')
-    <main class="main-content mt-0">
+    <main class="main-content vh-100 mt-0">
         <div class="vh-100">
             <div class="page-header align-items-center min-vh-50"
                 style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
@@ -125,7 +125,6 @@
             var child_qty = $('#select_child_qty').val();
             var refresh = window.location.protocol + "//" + window.location.host + '/register-event?adult='+adult_qty+'&child='+child_qty+'';    
             window.location.href = refresh;
-            console.log(adult_qty + " " + child_qty)
         })
     </script>
 @endpush

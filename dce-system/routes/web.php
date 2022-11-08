@@ -71,6 +71,7 @@ use App\Http\Controllers\TicketController;
 	// Route::get('/payment-page', [PaymentPageController::class, 'show'])->name('payment-page');
 	Route::get('/my-ticket', [TicketController::class, 'index'])->name('my-ticket');
 	Route::get('/announcement-create', [AnnouncementController::class, 'index_admin'])->name('announcement-create');
+	Route::post('/register-event-post', [RegisterEventController::class, 'add']);
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
