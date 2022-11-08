@@ -47,7 +47,8 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/register-event', [RegisterEventController::class, 'create'])->middleware('guest')->name('register-event');
-	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register-event.perform');
+	Route::get('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register-event.store');
+	Route::post('/register-event', [RegisterDependantController::class, 'store'])->middleware('guest')->name('register-event.perform');
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
