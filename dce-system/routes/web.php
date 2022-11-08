@@ -23,17 +23,20 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;            
-use App\Http\Controllers\WelcomeController;          
+use App\Http\Controllers\ChangePassword;    
+use App\Http\Controllers\WelcomeController;            
+use App\Http\Controllers\RegisterEventController;      
+use App\Http\Controllers\RegisterDependantController;        
 use App\Http\Controllers\ReportController;               
 use App\Http\Controllers\ActivityController;   
-use App\Http\Controllers\AnnouncementController;          
+use App\Http\Controllers\AnnouncementController;   
+use App\Http\Controllers\PaymentPageController;          
         
-use App\Http\Controllers\RegisterEventController;   
 use App\Http\Controllers\AttendanceController;      
 use App\Http\Controllers\EventController;  
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\TicketController;  
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -45,11 +48,18 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
+	Route::get('/register-event', [RegisterEventController::class, 'create'])->middleware('guest')->name('register-event');
+	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
+	Route::post('/register-event', [RegisterDependantController::class, 'store'])->middleware('guest')->name('register-event.perform');
+	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
+	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
+	Route::get('/payment-page', [PaymentPageController::class, 'show'])->name('payment-page');
+	Route::get('/my-ticket', [TicketController::class, 'index'])->name('my-ticket');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');

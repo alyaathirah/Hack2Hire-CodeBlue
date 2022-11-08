@@ -14,7 +14,6 @@ class ActivityController extends Controller
      */
     public function index()
     {
-       
         $activities = DB::table('activity')->get();
         return view('pages.activity-list', ['activities' => $activities]);
     }

@@ -7,9 +7,9 @@ $(document).ready(function () {
     
     //announcement list page
         // activity list page
-        if ($('#ann-list').length > 0) {
-            $('#ann-list').DataTable();
-        }
+    if ($('#ann-list').length > 0) {
+        $('#ann-list').DataTable();
+    }
 
     // activity registration page
    
@@ -38,6 +38,26 @@ $(document).ready(function () {
         parent.addEventListener('wheel', panzoom.zoomWithWheel);
     }
 
+    // ticket list
+    if($('#download-ticket_btn').length > 0){
+        $('#download-ticket_btn').click(function(){
+            var element = document.getElementById('ticket-list');
+            var opt = {
+                margin:       0.5,
+                filename:     'myticket.pdf',
+                image:        { type: 'png', quality: 0.98 },
+                html2canvas:  {
+                    scale: 2        // higher quality
+                     // simulate a browser size that causes the page's responsive CSS to output a pleasing layout in the rendered PDF
+                },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+              };
+            html2pdf().set(opt).from(element).save();
+        })
 
+    }
+
+    const element = document.getElementById("unique-id");
+    DDS.Tabs(element);
 
 });
