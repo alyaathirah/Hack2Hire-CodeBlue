@@ -12,10 +12,4 @@ class ReportController extends Controller
     {
         return Excel::download(new ReportExport(), 'DCE_2022.xlsx');
     }
-
-    public function storeExcel()
-    {
-
-        return Excel::store(new ReportExport(['participant, activity', 'ngo']), 'invoices.xlsx', 's3');
-    }
 }
