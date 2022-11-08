@@ -70,8 +70,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
-	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
-	Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
+
+	// Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
 	Route::post('/event-create-store', [EventController::class, 'store']);
 	Route::get('/attendance-list', [AttendanceController::class, 'show_list'])->name('show_list');
 
@@ -79,6 +79,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
 
 	Route::get('/qrcode', [QrCodeController::class, 'index']);
+
+	
+	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
+	Route::post('/add-activity', 'ActivityController@create')->name('add-activity');
+
 });
 
 
