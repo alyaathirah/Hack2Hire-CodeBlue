@@ -34,6 +34,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EventController;  
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\TicketController;  
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -50,6 +51,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
+	Route::get('/my-ticket', [TicketController::class, 'index'])->name('my-ticket');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
