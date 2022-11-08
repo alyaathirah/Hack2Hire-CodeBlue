@@ -32,6 +32,8 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\RegisterEventController;   
 use App\Http\Controllers\AttendanceController;      
 use App\Http\Controllers\EventController;  
+use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\QrCodeController;
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -70,6 +72,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
 	Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
 	Route::post('/event-create-store', [EventController::class, 'store']);
+	Route::get('/attendance-list', [AttendanceController::class, 'show_list'])->name('show_list');
+
+	Route::get('image-upload', [ ImageUploadController::class, 'imageUpload' ])->name('image.upload');
+	Route::post('image-upload', [ ImageUploadController::class, 'imageUploadPost' ])->name('image.upload.post');
+
+	Route::get('/qrcode', [QrCodeController::class, 'index']);
 });
 
 

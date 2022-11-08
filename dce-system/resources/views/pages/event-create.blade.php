@@ -9,11 +9,11 @@
     <form class="dds__form dds__container" method="POST" action="{{url('event-create-store')}}">
     @csrf
         <fieldset class="dds__form__section">
-            <legend>Create new announcement</legend>
+            <legend>Create new event</legend>
             <div class="dds__row">
             <div class="dds__col--1 dds__col--sm-3">
                 <div class="dds__input-text__container">
-                <label id="text-input-label-804476461" for="text-input-control-name-804476461">Title</label>
+                <label id="text-input-label-804476461" for="text-input-control-name-804476461">Event name</label>
                 <div class="dds__input-text__wrapper">
                     <input
                     type="text"
@@ -25,7 +25,7 @@
                     />
 
                     <small id="text-input-helper-804476461" class="dds__input-text__helper"></small>
-                    <div id="text-input-error-804476461" class="dds__invalid-feedback">Enter a title to continue</div>
+                    <div id="text-input-error-804476461" class="dds__invalid-feedback">Enter the event name to continue</div>
                 </div>
                 </div>
             </div>
