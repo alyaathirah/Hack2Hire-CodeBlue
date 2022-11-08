@@ -27,6 +27,12 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\WelcomeController;            
 use App\Http\Controllers\RegisterEventController;      
 use App\Http\Controllers\RegisterDependantController;        
+use App\Http\Controllers\ReportController;               
+use App\Http\Controllers\ActivityController;   
+use App\Http\Controllers\AnnouncementController;          
+        
+use App\Http\Controllers\AttendanceController;      
+use App\Http\Controllers\EventController;  
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -42,6 +48,12 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register-event.perform');
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
+	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
+	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
+	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
+	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
+	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
@@ -52,4 +64,19 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+	Route::get('/report/export', [ReportController::class, 'export'])->name('excel');
+
+	
+	Route::get('/qr-scanner', [PageController::class, 'qr_scanner'])->name('qr-scanner');
+	Route::get('/nowhere/{code}', [AttendanceController::class, 'index']);
+	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
+	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
+	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
+	Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
+	Route::post('/event-create-store', [EventController::class, 'store']);
 });
+
+
+
+

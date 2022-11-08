@@ -6,7 +6,7 @@
                 class="navbar navbar-expand-lg blur top-0 z-index-3 shadow position-absolute py-2 start-0 end-0">
                 <div class="container-fluid">
                     <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('home') }}">
-                        Argon Dashboard 2 Laravel
+                        Dell Charity Engage
                     </a>
                     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -20,13 +20,6 @@
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
-                                    href="{{ route('home') }}">
-                                    <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
-                                    Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('register') }}">
                                     <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
                                     Sign Up
@@ -38,11 +31,23 @@
                                     Sign In
                                 </a>
                             </li>
-                        </ul>
-                        <ul class="navbar-nav d-lg-block d-none">
                             <li class="nav-item">
-                                <a href="https://www.creative-tim.com/product/argon-dashboard-laravel" target="_blank"
-                                    class="btn btn-sm mb-0 me-1 btn-primary">Free Download</a>
+                                <a class="nav-link me-2" href="{{ route('login') }}">
+                                    <i class="fas fa-solid fa-user opacity-6 text-dark me-1"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-2" href="{{ route('activity-list') }}">
+                                    <i class="fas fa-solid fa-person-running  opacity-6 text-dark me-1"></i>
+                                    Activity
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-2" href="{{ route('announcement') }}">
+                                    <i class="fas fa-sharp fa-solid fa-bullhorn opacity-6 text-dark me-1"></i>
+                                    Announcement
+                                </a>
                             </li>
                         </ul>
                     </div>

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Event;
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 
-class WelcomeController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +15,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $event = DB::table('event')->where('id', '1')->first();
-        $anns = DB::table('announcement')
-        ->orderBy('id', 'desc')
-        ->limit(3)
-        ->get();
-        return view('pages.welcome', ['event' => $event, 'anns' => $anns]);
+        //
     }
 
     /**
@@ -35,32 +31,37 @@ class WelcomeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreEventRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $post = new Event;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        // $post->title = $request->input('title');
+        $post->save();
+        return redirect('event-create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Event $event)
     {
-        return view('pages.floor-plan');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
         //
     }
@@ -68,11 +69,11 @@ class WelcomeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateEventRequest  $request
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEventRequest $request, Event $event)
     {
         //
     }
@@ -80,10 +81,10 @@ class WelcomeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
         //
     }
