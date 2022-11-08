@@ -14,6 +14,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
+       
         $activities = DB::table('activity')->get();
         return view('pages.activity-list', ['activities' => $activities]);
     }
@@ -37,7 +38,18 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $request->validate([
+        //     'user_id' => 'required',
+        //     'activity_id' => 'required',
+        // ]);
+
+        DB::table('activity_participant')->insert([
+            'participant_id' => $request->user_id,
+            'activity_id' => $request->activity_id,
+        ]);
+
+        return redirect()->route('activity-list.index')
+                        ->with('success','Activity registered successfully');
     }
 
     /**
@@ -46,15 +58,17 @@ class ActivityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         // get activity details
         $activity =  DB::table('activity')->where('id', $id)->first();
         // get user and dependent details
         // $users = DB::table('users')->where('id', auth()->user()->id)->get();
         // return view('pages.register-activity', ['activity' => $activity, 'users' => $users]);
-        $users = null;
-        return view('pages.register-activity', ['activity' => $activity,  'users' => $users]);
+        $user = auth()->user();
+        $dependents =  DB::table('participant')->where('account_id', $user->id)->get();
+       
+        return view('pages.register-activity', ['activity' => $activity,  'user' => $user, 'dependents' => $dependents]);
     }
 
     public function getList()

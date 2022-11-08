@@ -9,13 +9,9 @@ class AttendanceController extends Controller
 {
     public function index($code){
         // $post = Participants::find($code);
-        $column = 'id';
+        $column = 'code';
         $post = Participant::where($column , '=', $code)->first();
-
-        echo "<p>";
-        // echo $post->id;
-        echo $post->firstname;
-        echo "</p>";
     }
+    
    
 }

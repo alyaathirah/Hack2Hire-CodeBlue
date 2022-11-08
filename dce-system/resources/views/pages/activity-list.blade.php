@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="page__title"> Activity List </div>
-
+    
     <table id="activity-list" class="display" style="width:100%">
         <thead>
             <tr>
@@ -49,8 +49,9 @@
                                             </p>
                                         </div>
                                         <div class="dds__card__action">
-                                            <button class="dds__button dds__button--sm" type="button"
-                                                aria-describedby="card  Primary">Register</button>
+                                            <a class="dds__button dds__button--sm"
+                                                href="{{url('/register-activity/'.$activity->id) }}" role="button"
+                                                id="{{ $activity->id }}">Register</a>
                                         </div>
                                     </div>
                                 </div>
