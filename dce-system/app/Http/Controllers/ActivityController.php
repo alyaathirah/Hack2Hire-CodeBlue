@@ -25,7 +25,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -47,7 +47,13 @@ class ActivityController extends Controller
      */
     public function show($id)
     {
-        //
+        // get activity details
+        $activity =  DB::table('activity')->where('id', $id)->first();
+        // get user and dependent details
+        // $users = DB::table('users')->where('id', auth()->user()->id)->get();
+        // return view('pages.register-activity', ['activity' => $activity, 'users' => $users]);
+        $users = null;
+        return view('pages.register-activity', ['activity' => $activity,  'users' => $users]);
     }
 
     /**
