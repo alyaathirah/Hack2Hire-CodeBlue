@@ -24,6 +24,7 @@
     <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-icons.min.css" />
     <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-helpers.min.css" />
     <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-main.min.css" />
+    @stack('css')
 </head>
 
 <body class="{{ $class ?? '' }}">
