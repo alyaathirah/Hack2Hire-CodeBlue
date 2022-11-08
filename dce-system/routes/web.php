@@ -61,6 +61,7 @@ use App\Http\Controllers\TicketController;
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
 	Route::get('/payment-page', [PaymentPageController::class, 'show'])->name('payment-page');
 	Route::get('/my-ticket', [TicketController::class, 'index'])->name('my-ticket');
+	Route::get('/announcement-create', [AnnouncementController::class, 'index_admin'])->name('announcement-create');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
@@ -78,7 +79,7 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::get('/qr-scanner', [PageController::class, 'qr_scanner'])->name('qr-scanner');
 	Route::get('/nowhere/{code}', [AttendanceController::class, 'index']);
-	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
+	
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
 
