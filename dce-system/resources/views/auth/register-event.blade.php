@@ -16,8 +16,8 @@
             color:red;
         }
     </style>
-    <main class="main-content mt-0">
-        <div class="container-fluid  ">
+    <main class="main-content">
+        <div class="container vh-100 justify-content-center align-items-center mt-5">
             <div class="row justify-content-md-center">
                 <div class="col-md-9 ">
                     <div class="card px-5 py-3 mt-5 shadow">
@@ -25,7 +25,7 @@
                             <div class="nav nav-fill my-3">
                                 <label class="nav-link shadow-sm step0 border ml-2">Step One</label>
                                 <label class="nav-link shadow-sm step1 border ml-2">Step Two</label>
-                                <label class="nav-link shadow-sm step2 border ml-2">Step Three</label>
+                                {{-- <label class="nav-link shadow-sm step2 border ml-2">Step Three</label> --}}
                             </div>
                         <form method="POST" class="employee-form" action="{{ url('register-event-post') }}" >
                         @csrf
@@ -134,7 +134,7 @@
                         @endfor
                     </div>
                             {{-- Second Step --}}
-                            <div class="form-section">
+                            {{-- <div class="form-section">
                                 <div class="dds__col-12 dds__col--md-6 dds__col--lg-4 dds__mb-3">
                                     <div class="dds__card">
                                       <div class="dds__card__content">
@@ -152,7 +152,7 @@
                                       </div>
                                     </div>
                                   </div>
-                            </div>
+                            </div> --}}
                             {{-- Last Step --}}
                             <div class="form-section">
                                 <fieldset required="" aria-required="true" class="dds__fieldset dds__radio-button-group" role="radiogroup">

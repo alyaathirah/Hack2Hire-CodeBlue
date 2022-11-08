@@ -2,8 +2,8 @@
 
 @section('content')
     @include('layouts.navbars.guest.navbar')
-    <main class="main-content vh-100 mt-0">
-        <div class="vh-100">
+    <main class="main-content mt-0">
+        <div class="">
             <div class="page-header align-items-center min-vh-50"
                 style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
                 <span class="mask bg-gradient-dark opacity-6"></span>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="dds__container">
                         <div class="text-center">
-                            <a  id="nextBtn" class="dds__button dds__button--block dds__button--secondary mt-4 mb-0" type="submit" role="button">Next</a>
+                            <a  id="nextBtn" class="dds__button dds__button--block dds__button--secondary mt-4 mb-4" type="submit" role="button">Next</a>
                         </div>
                     </div>
                 </div>

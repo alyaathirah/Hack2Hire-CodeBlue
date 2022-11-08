@@ -51,7 +51,7 @@
                                                     </label> <input type="text" required class="form-control"> </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer"> <button type="button" href="{{ url('/welcome') }}" class="subscribe btn btn-primary btn-block shadow-sm">Confirm Payment</button></div>
+                                        <div class="card-footer"> <a type="button" href="{{ url('/welcome') }}" class="subscribe btn btn-primary btn-block shadow-sm">Confirm Payment</a></div>
                                     </form>
                                 </div>
                             </div> <!-- End -->
