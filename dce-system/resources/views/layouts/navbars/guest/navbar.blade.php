@@ -30,20 +30,26 @@
                             @endif
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('my-ticket') }}">
-                                    <i class="fas fa-solid fa-user opacity-6 text-dark me-1"></i>
+                                    {{-- <i class="fas fa-solid fa-user opacity-6 text-dark me-1"></i> --}}
                                     My Ticket
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('activity-list') }}">
-                                    <i class="fas fa-solid fa-person-running  opacity-6 text-dark me-1"></i>
+                                    {{-- <i class="fas fa-solid fa-person-running  opacity-6 text-dark me-1"></i> --}}
                                     Activity
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('announcement') }}">
-                                    <i class="fas fa-sharp fa-solid fa-bullhorn opacity-6 text-dark me-1"></i>
+                                    {{-- <i class="fas fa-sharp fa-solid fa-bullhorn opacity-6 text-dark me-1"></i> --}}
                                     Announcement
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link me-2" href="{{ route('logout') }}">
+                                    {{-- <i class="fa fa-user fa-solid opacity-6 text-dark me-1"></i> --}}
+                                    Sign out
                                 </a>
                             </li>
                         </ul>

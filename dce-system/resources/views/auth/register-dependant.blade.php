@@ -106,9 +106,15 @@
                         </div>
                     </div>
                     <div class="dds__container">
-                        <div class="text-center">
-                            <a  id="nextBtn" class="dds__button dds__button--block dds__button--secondary mt-4 mb-4" type="submit" role="button">Next</a>
+                        <div class="row justify-content-center">
+                            <div class="col-md-auto">
+                                <div class="text-center">
+                                    <button  id="nextBtn" class="dds__button dds__button--block dds__button--primary mt-4 mb-0" type="submit" role="button">Next</button>
+                                </div>
+                            </div>
+                            
                         </div>
+                        
                     </div>
                 </div>
             {{-- </form> --}}
