@@ -292,7 +292,6 @@
                 </div>
             </div>
         </div> --}}
-        <button class="dds__button dds__button--secondary z-index-2" type="button">Secondary Button</button>
         @include('layouts.footers.auth.footer')
     </div>
 @endsection
