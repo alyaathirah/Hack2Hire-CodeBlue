@@ -17,7 +17,7 @@
             <div class="title"><?= $event->title ?></div>
             <div class="subtitle mb-2">Bringing the bonds closer!</div>
             <div class="paragraph"><?= $event->description ?></div>
-            <button class="dds__button dds__button--sm" type="button" href="#">Register</button>
+            <a class="dds__button dds__button--sm" href="{{url('/activity-list') }}" role="button">Register Activity</a>
         </section>
     </header>
 

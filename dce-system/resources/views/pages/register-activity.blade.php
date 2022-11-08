@@ -15,6 +15,8 @@
    
     <div class="dds__col-12 dds__col--md-6 dds__col--lg-4 dds__mb-3">
         <div class="dds__card">
+            <form action="{{ url('register-activity/store') }}" method="GET">
+                 @csrf
             <div class="dds__card__content">
                 <div class="dds__card__header">
                     <span class="dds__card__header__text">
@@ -24,26 +26,25 @@
                 </div>
                 <div class="dds__card__body">
                     <p>{{ $activity->description }}</p>
-                    <span class="slot__span">Slots:
-                                                    {{ $activity->max_slot  != null ? ($activity->current_slot != null ?  $activity->current_slot."/".$activity->max_slot : "0/".$activity->max_slot ) : "Open" }}</span>
+                    <span class="slot__span">Slots: {{ $activity->max_slot  != null ? ($activity->current_slot != null ?  $activity->current_slot."/".$activity->max_slot : "0/".$activity->max_slot ) : "Open" }}</span>
                     <div class="registration__section">
                         <br />
-                        <?= json_encode($users)  ?>
                         <div class="col-md-10">
                             <label for="name">Register for: </label>
                             <div class="input-group mb-2">
-                                <select class="form-select" id="participant"
+                                <select class="form-select" id="participant" name="user_id">
                                     aria-label="Example select with button addon">
-                                    <option selected>Choose...</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    <!-- dependent -->
+                                    @foreach ($dependents as $dep)
+                                    <option value="{{ $dep->id }}">{{ $dep->firstname }}</option>
+                                    @endforeach
                                 </select>
                                 <button class="dds__button dds__button--secondary dds__button--sm" type="button"
                                     id="append">Add</button>
                             </div>
+                            <input type="hidden" name="activity_id" value="{{$activity->id}}" />
                         </div>
-
 
                         <ul id="participant_list" class="dds__list">
 
@@ -52,10 +53,11 @@
                     </div>
                 </div>
                 <div class="dds__card__action">
-                    <button class="dds__button dds__button--sm" type="button"
+                    <button class="dds__button dds__button--sm" type="submit"
                         aria-describedby="card  Primary">Submit</button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
