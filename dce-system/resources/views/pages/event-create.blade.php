@@ -2,14 +2,19 @@
 
 @section('content')
     @include('layouts.navbars.auth.topnav', ['title' => 'Edit Announcement'])
-    <div class="card shadow-lg mx-4 card-profile-bottom">
+    <div class="dds__card">
     <?php
         $title = $description = "";
     ?>
     <form class="dds__form dds__container" method="POST" action="{{url('event-create-store')}}">
     @csrf
         <fieldset class="dds__form__section">
-            <legend>Create new event</legend>
+            <!-- <legend>Create new event</legend> -->
+            <div class="dds__card__header">
+            <span class="dds__card__header__text">
+                <h5 class="dds__card__header__title">Create new event</h5>
+            </span>
+            </div>
             <div class="dds__row">
             <div class="dds__col--1 dds__col--sm-3">
                 <div class="dds__input-text__container">
