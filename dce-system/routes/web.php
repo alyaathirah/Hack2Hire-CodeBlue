@@ -23,8 +23,9 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;    
-use App\Http\Controllers\WelcomeController;             
+use App\Http\Controllers\ChangePassword;            
+use App\Http\Controllers\WelcomeController;          
+use App\Http\Controllers\ReportController;               
 use App\Http\Controllers\ActivityController;   
 use App\Http\Controllers\AnnouncementController;          
         
@@ -58,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-
+	Route::get('/report/export', [ReportController::class, 'export'])->name('excel');
 
 	
 	Route::get('/qr-scanner', [PageController::class, 'qr_scanner'])->name('qr-scanner');
@@ -66,3 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
 	Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 });
+
+
+
+
