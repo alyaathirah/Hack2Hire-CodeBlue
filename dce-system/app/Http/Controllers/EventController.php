@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Announcement;
+use App\Models\Event;
+use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 
-class AnnouncementController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $anns = DB::table('announcement')->get();
-        return view('pages.announcement-list', ['anns' => $anns]);
+        //
     }
 
     /**
@@ -24,38 +23,34 @@ class AnnouncementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function create_page(){
-        return view('pages.announcement-create');
-    }
-    public function create(Request $request)
-    {
-        $post = new Announcement;
-        // $post->title = $request->title;
-        $post->description = $request->description;
-        $post->title = $request->input('title');
-        $post->save();
-        return redirect('announcement-create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function create()
     {
         //
     }
 
     /**
-     * Display the specified resource.
+     * Store a newly created resource in storage.
      *
-     * @param  int  $id
+     * @param  \App\Http\Requests\StoreEventRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function store(Request $request)
+    {
+        $post = new Event;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        // $post->title = $request->input('title');
+        $post->save();
+        return redirect('event-create');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Event  $event
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Event $event)
     {
         //
     }
@@ -63,10 +58,10 @@ class AnnouncementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
         //
     }
@@ -74,11 +69,11 @@ class AnnouncementController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\UpdateEventRequest  $request
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEventRequest $request, Event $event)
     {
         //
     }
@@ -86,10 +81,10 @@ class AnnouncementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
         //
     }
