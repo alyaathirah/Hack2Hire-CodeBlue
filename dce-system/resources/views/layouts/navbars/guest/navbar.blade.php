@@ -19,18 +19,15 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item">
-                                <a class="nav-link me-2" href="{{ route('register') }}">
-                                    <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                    Sign Up
-                                </a>
-                            </li>
+
+                            @if (auth()->user() == null)
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('login') }}">
                                     <i class="fas fa-key opacity-6 text-dark me-1"></i>
                                     Sign In
                                 </a>
                             </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('my-ticket') }}">
                                     <i class="fas fa-solid fa-user opacity-6 text-dark me-1"></i>
