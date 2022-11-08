@@ -55,6 +55,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
+	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
@@ -81,7 +82,7 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
 
-	// Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
+	Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
 	Route::post('/event-create-store', [EventController::class, 'store']);
 	Route::get('/attendance-list', [AttendanceController::class, 'show_list'])->name('show_list');
 
@@ -91,8 +92,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/qrcode', [QrCodeController::class, 'index']);
 
 	
-	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
-	Route::post('/add-activity', 'ActivityController@create')->name('add-activity');
+	
+	Route::post('/add-activity', [ActivityController::class, 'create'])->name('add-activity');
 
 });
 
