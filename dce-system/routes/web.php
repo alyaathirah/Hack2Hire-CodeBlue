@@ -67,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
+	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
 });
 
 

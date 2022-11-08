@@ -18,6 +18,7 @@ class ActivityController extends Controller
         return view('pages.activity-list', ['activities' => $activities]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -55,6 +56,16 @@ class ActivityController extends Controller
         $users = null;
         return view('pages.register-activity', ['activity' => $activity,  'users' => $users]);
     }
+
+    public function getList()
+    {
+        $activities = DB::table('activity')
+                    ->select('name', 'start_time', 'end_time', 'age_category', 'max_slot', 'current_slot', 'type')
+                    ->get();
+
+        return view('pages.admin-activity-list', ['activities' => $activities]);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
