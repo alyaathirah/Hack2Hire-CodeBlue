@@ -65,7 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/qr-scanner', [PageController::class, 'qr_scanner'])->name('qr-scanner');
 	Route::get('/nowhere/{code}', [AttendanceController::class, 'index']);
 	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
-	Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
+	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
+	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
 });
 
 

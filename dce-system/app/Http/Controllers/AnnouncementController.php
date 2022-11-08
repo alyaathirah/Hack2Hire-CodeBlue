@@ -31,9 +31,9 @@ class AnnouncementController extends Controller
     public function create(Request $request)
     {
         $post = new Announcement;
-        $post->title = $request->title;
+        // $post->title = $request->title;
         $post->description = $request->description;
-        // $post->image = $request->image;
+        $post->title = $request->input('title');
         $post->save();
         return redirect('announcement-create');
     }

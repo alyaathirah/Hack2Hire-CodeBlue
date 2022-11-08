@@ -7,7 +7,7 @@
         $title = $description = "";
     ?>
     <form class="dds__form dds__container" method="POST" action="{{url('announcement-create-post')}}">
-        @csrf
+    @csrf
         <fieldset class="dds__form__section">
             <legend>Personal information</legend>
             <div class="dds__row">
