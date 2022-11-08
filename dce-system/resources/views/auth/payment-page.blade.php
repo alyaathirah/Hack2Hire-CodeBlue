@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="position-sticky z-index-sticky top-0">
         <div class="row">
             <div class="col-12">
@@ -11,12 +10,6 @@
     </div>
     <main class="main-content mt-0">
         <div class="container py-5">
-            <!-- For demo purpose -->
-            <div class="row mb-4">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-6">Bootstrap Payment Forms</h1>
-                </div>
-            </div> <!-- End -->
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div class="card ">
@@ -58,7 +51,7 @@
                                                     </label> <input type="text" required class="form-control"> </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer"> <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+                                        <div class="card-footer"> <a type="button" href="{{ url('/welcome') }}" class="subscribe btn btn-primary btn-block shadow-sm">Confirm Payment</a></div>
                                     </form>
                                 </div>
                             </div> <!-- End -->

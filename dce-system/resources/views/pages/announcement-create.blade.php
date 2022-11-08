@@ -1,8 +1,9 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 @section('content')
 
-@include('layouts.navbars.auth.topnav', ['title' => 'Activity List'])
-<div class="card shadow-lg mx-4 card-profile-bottom">
+@include('layouts.navbars.auth.topnav', ['title' => 'Announcement List'])
+<!-- <div class="card shadow-lg mx-4 card-profile-bottom"> -->
+<div class="dds__card">
 <div class="container">
     <!-- <div class="page__title">Announcement</div> -->
     <div class="dds__card__header">
@@ -22,7 +23,7 @@
         <table id="ann-list" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>Activity</th>
+                    <th>Announcement</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,7 +101,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>  
           </div>
           <div class="modal-body">
-            <form data-dds="form" class="dds__form dds__container p-1 mb-0" method="POST" action="{{url('add-activity')}}">
+            <form data-dds="form" class="dds__form dds__container p-1 mb-0" method="POST" action="{{url('announcement-create-post')}}">
               @csrf
               @method('POST')
               <fieldset class="dds__form__section">
@@ -113,7 +114,7 @@
                         <input
                           type="text"
                           class="dds__input-text"
-                          name="name"
+                          name="title"
                           id="text-input-control-545247653"
                           required=""
                           aria-labelledby="text-input-label-545247653 text-input-helper-545247653"

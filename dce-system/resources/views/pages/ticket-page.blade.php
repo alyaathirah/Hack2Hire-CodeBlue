@@ -51,7 +51,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <img src="{{ asset('img/funrun.jpg') }}" class="img-fluid"
+                                        <img src="{{ asset('img/qr.png') }}" class="img-fluid"
                                             style="object-fit: cover; height: 100%;">
                                     </div>
                                 </div>

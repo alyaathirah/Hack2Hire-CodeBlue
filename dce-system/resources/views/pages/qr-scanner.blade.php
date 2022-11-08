@@ -5,7 +5,14 @@
     <div class="card shadow-lg mx-4 card-profile-bottom">
     <div class="card-body p-3">
         <div id="app">
+            <div class="video-container">
+                <video class="video" id="preview"></video>
+            </div>
             <div class="sidebar">
+                <ul v-if="scans.length === 0">
+                    <p class="empty">No scans found</p>
+                </ul>
+                
                 <section class="cameras">
                     <h4>Cameras</h4>
                     <ul>
@@ -20,35 +27,33 @@
                 </section>
                 <section class="scans">
                     <h4>Participant Info</h4>
-                    <ul v-if="scans.length === 0">
-                            <li class="empty">No scans found</li>
-                        </ul>
-                    <!-- <transition-group name="scans" tag="ul">
-                        <li v-for="scan in scans" :key="scan.date" :title="scan.content">@{{ scan.content }}</li>
-                        <a :href="'/products/show/' + scan.content">@{{ scan.content }}</a>
-                        <form action="target.php" method="get">
-                            <input type="hidden" name="qr" :key="scan.date" :value="scan.content" />
-                            <input type="submit" value="Send to PHP"/>
-                        </form>
-                    </transition-group> -->
                     <transition-group name="scans" tag="ul">
                         <li v-for="scan in scans" :key="scan.date" :title="scan.content">@{{ scan.content }}
-                            <form action="target.php" method="get">
+                            <!-- <form action="target.php" method="get"> -->
+                            <form action="{{url('qr-scanner-store')}}" method="POST">
+                            @csrf
                             <input type="hidden" name="qr" :key="scan.date" :value="scan.content" />
-                            <input type="submit" value="Send to PHP"/>
+                            <input type="submit" value="Submit Attendance"/>
                             </form>
                         </li>
                     </transition-group>
-
+                    @if(session('success'))
+                    <?php
+                        $participants = session()->get('success');
+                        $firstname = $participants->firstname;
+                        $lastname = $participants->lastname;
+                        $age_category = $participants->age_category;
+                    ?>
+                    <p><?php echo $firstname;?> <?php echo $lastname;?></p>
+                    <p><?php echo $age_category;?></p>
+                    @endif
                     
                     
                 </section>
             
-                <input type="button" value="Camera On" onclick="camera_toggle()" id="camera-toggle"></input> 
+                <input class="dds__button" type="button" value="Camera On" onclick="camera_toggle()" id="camera-toggle"></input> 
 
-                <div class="preview-container">
-                    <video id="preview"></video>
-                </div>
+            
 
             </div>
         </div>
@@ -60,5 +65,7 @@
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script type="text/javascript" src="assets/js/qr-scanner.js"></script>
 @endpush
-
+@push('css')
+<link id="pagestyle" href="{{ asset('assets/css/qr-style.css') }}" rel="stylesheet" />
+@endpush
 @endsection

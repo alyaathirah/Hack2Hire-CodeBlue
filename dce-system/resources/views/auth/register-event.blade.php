@@ -16,8 +16,8 @@
             color:red;
         }
     </style>
-    <main class="main-content mt-0">
-        <div class="container-fluid  ">
+    <main class="main-content">
+        <div class="container vh-100 justify-content-center align-items-center mt-5">
             <div class="row justify-content-md-center">
                 <div class="col-md-9 ">
                     <div class="card px-5 py-3 mt-5 shadow">
@@ -25,24 +25,35 @@
                             <div class="nav nav-fill my-3">
                                 <label class="nav-link shadow-sm step0 border ml-2">Step One</label>
                                 <label class="nav-link shadow-sm step1 border ml-2">Step Two</label>
-                                <label class="nav-link shadow-sm step2 border ml-2">Step Three</label>
+                                {{-- <label class="nav-link shadow-sm step2 border ml-2">Step Three</label> --}}
                             </div>
-                        
-                        <form method="POST" class="employee-form" action="{{ route('register.perform') }}" >
+                        <form method="POST" class="employee-form" action="{{ url('register-event-post') }}" >
                         @csrf
+                        @method('POST')
                         {{-- First Step --}}
                         <div class="form-section">
-                        @for ($i = 1; $i <= 2; $i++)
+                        @for ($i = 1; $i <= $total; $i++)
                             <div class="dds__card p-5 m-5">
-                                <h5>{{ "Adult " . $i }}</h5>
+                                @if ($i <= $adult)
+                                    @php 
+                                        $str="Adult";
+                                        $num = $i;
+                                    @endphp
+                                @else
+                                    @php 
+                                        $str="Child";
+                                        $num = $i - $adult;
+                                    @endphp
+                                @endif
+                                <h5>{{ $str . " " . $num }}</h5>
                                     <label for="">First Name:</label>
-                                    <input type="text" class="form-control mb-3" name="firstname" required>
+                                    <input type="text" class="form-control mb-3" name="firstname[]" required>
                                     <label for="">Last Name:</label>
-                                    <input type="text" class="form-control mb-3" name="lastname" required>
+                                    <input type="text" class="form-control mb-3" name="lastname[]" required>
                                     <div class="dds__select " data-dds="select">
                                         <label id="select-0Label" for="select-0">Employee Status</label>
                                         <div class="dds__select__wrapper">
-                                            <select id="select-0" class="dds__select__field" name="employee_status" aria-describedby="select-0Helper">
+                                            <select id="select-0" class="dds__select__field" name="employee_status[]" aria-describedby="select-0Helper">
                                                 <option value="non-employee">Non-employee</option>
                                                 <option value="employee">Employee</option>
                                             </select>
@@ -52,7 +63,7 @@
                                     <div class="dds__select " data-dds="select">
                                         <label id="select-0Label" for="select-0">Worksite</label>
                                         <div class="dds__select__wrapper">
-                                            <select id="select-0" class="dds__select__field" name="worksite" aria-describedby="select-0Helper">
+                                            <select id="select-0" class="dds__select__field" name="worksite[]" aria-describedby="select-0Helper">
                                                 <option value="">Non-employee</option>
                                                 <option value="penang">Penang</option>
                                                 <option value="cyberjaya">Cyberjaya</option>
@@ -68,7 +79,7 @@
                                             type="tel"
                                             class="dds__input-text"
                                             maxlength="256"
-                                            name="phone"
+                                            name="phone[]"
                                             id="inputmask-884970456"
                                             required=""
                                             aria-labelledby="inputmask-label-866077187 inputmask-helper-830276334"
@@ -80,7 +91,7 @@
                                     <div class="dds__select " data-dds="select">
                                         <label id="select-0Label" for="select-0">Shirt Size</label>
                                         <div class="dds__select__wrapper">
-                                            <select id="select-0" class="dds__select__field" name="shirt_size" aria-describedby="select-0Helper">
+                                            <select id="select-0" class="dds__select__field" name="shirt_size[]" aria-describedby="select-0Helper">
                                                 <option value="1-2">1 - 2 years</option>
                                                 <option value="3-4">3 - 4 years</option>
                                                 <option value="5-6">5 - 6 years</option>
@@ -103,7 +114,7 @@
                                     <div class="dds__select " data-dds="select">
                                         <label id="select-0Label" for="select-0">Choose NGO to donate</label>
                                         <div class="dds__select__wrapper">
-                                            <select id="select-0" class="dds__select__field" name="ngo_id" aria-describedby="select-0Helper">
+                                            <select id="select-0" class="dds__select__field" name="ngo_id[]" aria-describedby="select-0Helper">
                                                 <option value="1">Epic Homes</option>
                                                 <option value="2">SOLS 24/7</option>
                                                 <option value="3">Free Tree Society</option>
@@ -119,13 +130,11 @@
                                             <div id="select-0Feedback" class="dds__invalid-feedback">This field is Required</div>
                                         </div>
                                     </div>   
-                        </div>
+                            </div>
                         @endfor
-                        
                     </div>
-                        
                             {{-- Second Step --}}
-                            <div class="form-section">
+                            {{-- <div class="form-section">
                                 <div class="dds__col-12 dds__col--md-6 dds__col--lg-4 dds__mb-3">
                                     <div class="dds__card">
                                       <div class="dds__card__content">
@@ -143,7 +152,7 @@
                                       </div>
                                     </div>
                                   </div>
-                            </div>
+                            </div> --}}
                             {{-- Last Step --}}
                             <div class="form-section">
                                 <fieldset required="" aria-required="true" class="dds__fieldset dds__radio-button-group" role="radiogroup">
@@ -165,7 +174,7 @@
                                 <button type="button" class="next btn btn-primary float-right">Next &gt;</button>
                                 <button type="submit" class="btn btn-success float-right">Submit</button>
                             </div>
-                            </form>
+                        </form>
                     </div>
                 </div>
             </div>
