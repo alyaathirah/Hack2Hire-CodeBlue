@@ -48,9 +48,12 @@
                     <td>{{$activity->age_category}}</td>
                     <td>{{$activity->current_slot}}/{{$activity->max_slot}}</td>
                     <td>{{$activity->type}}</td>
-                    <td><a class="dds__button dds__button--mini" href="{{url('/edit-activity/'.$activity->id) }}" role="button" id="{{ $activity->id }}">Edit</a>&nbsp&nbsp
+                    <td><button type="button" class="dds__button dds__button--mini" data-bs-toggle="modal" data-bs-target="#editModal" data-whatever="{{ $activity->id }}">
+                      Edit
+                    </button>&nbsp&nbsp
                       <a class="dds__button dds__button--mini" href="{{url('/admin-activity-participant/'.$activity->id) }}" role="button" id="{{ $activity->id }}">View Participants</a>
                   </tr>
+                  
                   @endforeach
                 </tbody>
             </table>
@@ -195,37 +198,20 @@
                   </div>
                 </div>
                 <div class="dds__row">
-                  <div class="dds__col--1">
-                    <fieldset name="radio" class="dds__fieldset dds__fieldset--inline dds__radio-button-group" role="radiogroup">
-                      <legend>Type (Open/Close)</legend>
-            
-                      <div class="dds__radio-button">
-                        <input
-                          class="dds__radio-button__input"
-                          type="radio"
-                          name="name-537973720"
-                          id="radio-button-control-515094238"
-                          value="Open"
-                        />
-                        <label class="dds__radio-button__label" id="radio-button-label-515094238" for="radio-button-control-515094238">
-                          Open
-                        </label>
-                      </div>
-                      <div class="dds__radio-button">
-                        <input
-                          class="dds__radio-button__input"
-                          type="radio"
-                          name="name-537973720"
-                          id="radio-button-control-760454775"
-                          value="Close"
-                        />
-                        <label class="dds__radio-button__label" id="radio-button-label-760454775" for="radio-button-control-760454775">
-                          Close
-                        </label>
-                      </div>
-                      <div id="" class="dds__invalid-feedback"></div>
-                    </fieldset>
+                <div class="dds__col--1 dds__col--sm-3">
+                  <div class="dds__select" data-dds="select">
+                    <label id="select-label-730835274" for="select-control-730835274">Type (Open/Close)</label>
+                    <div class="dds__select__wrapper">
+                      <select name="type" id="select-control-730835274" class="dds__select__field" aria-describedby="select-helper-730835274" required="">
+                        <option value="" class="dds__select__option--placeholder" selected>Select an option</option>
+                        <option value="Open">Open</option>
+                        <option value="Close">Close</option>
+                      </select>
+                      <small id="select-helper-730835274" class="dds__select__helper"></small>
+                      <div id="select-error-730835274" class="dds__invalid-feedback"></div>
+                    </div>
                   </div>
+                </div>
                 </div>
               </fieldset>
               <div class="modal-footer">
@@ -238,28 +224,15 @@
       </div>
     </div>
     <!-- Edit Modal -->
-
-    @if(session('edit-activity'))
-    <?php
-      $activityData = session()->get('edit-activity');
-      $name = $activityData->name;
-      $event = $activityData->event_id;
-      $description = $activityData->description;
-      $start_time = $activityData->start_time;
-      $end_time = $activityData->end_time;
-      $slot = $activityData->max_slot;
-      $age_category = $activityData->age_category;
-      $type = $activityData->type
-    ?>
     <div class="dds__modal modal-dialog-scrollable" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content" style="border-radius: 0.125rem">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="editModalctivityModalLabel">Add New Activity</h1>
+            <h1 class="modal-title fs-5" id="editModalctivityModalLabel">Edit Activity</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>  
           </div>
           <div class="modal-body">
-            <form data-dds="form" class="dds__form dds__container p-1 mb-0" method="POST" action="{{url('add-activity')}}">
+            <form data-dds="form" class="dds__form dds__container p-1 mb-0" method="POST" action="{{url('/update-activity/'.$activity->id)}}">
               @csrf
               @method('POST')
               <fieldset class="dds__form__section">
@@ -275,7 +248,7 @@
                           name="name"
                           id="text-input-control-545247653"
                           required=""
-                          value = {{$name}}
+                          value = '{{$activity->name}}'
                           aria-labelledby="text-input-label-545247653 text-input-helper-545247653"
                         />
                         <small id="text-input-helper-545247653" class="dds__input-text__helper"></small>
@@ -307,7 +280,7 @@
                         <textarea
                           class="dds__text-area"
                           name="description"
-                          value = {{$description}}
+                          value = {{$activity->description}}
                           id="text-area-control-256775854"
                           data-maxlength="null"
                           aria-required="true"
@@ -378,8 +351,8 @@
                       <div class="dds__select__wrapper">
                         <select name="age-category" id="select-control-730835274" class="dds__select__field" aria-describedby="select-helper-730835274" required="">
                           <option value="" class="dds__select__option--placeholder" selected>Select an option</option>
-                          <option value="adult">Adult</option>
-                          <option value="child">Child</option>
+                          <option value="Adult">Adult</option>
+                          <option value="Child">Child</option>
                         </select>
                         <small id="select-helper-730835274" class="dds__select__helper"></small>
                         <div id="select-error-730835274" class="dds__invalid-feedback"></div>
@@ -388,37 +361,20 @@
                   </div>
                 </div>
                 <div class="dds__row">
-                  <div class="dds__col--1">
-                    <fieldset name="radio" class="dds__fieldset dds__fieldset--inline dds__radio-button-group" role="radiogroup">
-                      <legend>Type (Open/Close)</legend>
-            
-                      <div class="dds__radio-button">
-                        <input
-                          class="dds__radio-button__input"
-                          type="radio"
-                          name="name-537973720"
-                          id="radio-button-control-515094238"
-                          value="Open"
-                        />
-                        <label class="dds__radio-button__label" id="radio-button-label-515094238" for="radio-button-control-515094238">
-                          Open
-                        </label>
-                      </div>
-                      <div class="dds__radio-button">
-                        <input
-                          class="dds__radio-button__input"
-                          type="radio"
-                          name="name-537973720"
-                          id="radio-button-control-760454775"
-                          value="Close"
-                        />
-                        <label class="dds__radio-button__label" id="radio-button-label-760454775" for="radio-button-control-760454775">
-                          Close
-                        </label>
-                      </div>
-                      <div id="" class="dds__invalid-feedback"></div>
-                    </fieldset>
+                <div class="dds__col--1 dds__col--sm-3">
+                  <div class="dds__select" data-dds="select">
+                    <label id="select-label-730835274" for="select-control-730835274">Type (Open/Close)</label>
+                    <div class="dds__select__wrapper">
+                      <select name="type" id="select-control-730835274" class="dds__select__field" aria-describedby="select-helper-730835274" required="">
+                        <option value="" class="dds__select__option--placeholder" selected>Select an option</option>
+                        <option value="Open">Open</option>
+                        <option value="Close">Close</option>
+                      </select>
+                      <small id="select-helper-730835274" class="dds__select__helper"></small>
+                      <div id="select-error-730835274" class="dds__invalid-feedback"></div>
+                    </div>
                   </div>
+                </div>
                 </div>
               </fieldset>
               <div class="modal-footer">
@@ -430,7 +386,16 @@
         </div>
       </div>
     </div>
-    @endif
+
+    {{-- @if(session('edit-activity'))
+    <script>
+      $(document).ready(function(){
+        $("#editModal").modal('show');
+    });
+      </script> --}}
+    
+    
+    {{-- @endif --}}
 @endsection
 
 @push('css')

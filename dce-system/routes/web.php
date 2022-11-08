@@ -58,7 +58,7 @@ use App\Http\Controllers\TicketController;
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
 	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
-	Route::get('/activity-participant-list/{id}', [ActivityController::class, 'showParticipant'])->name('activity-participant-list');
+	Route::get('/admin-activity-participant/{id}', [ActivityController::class, 'showParticipant'])->name('activity-participant-list');
 	Route::get('/edit-activity/{id}', [ActivityController::class, 'editSession'])->name('edit-session');
 	
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
@@ -99,6 +99,7 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	
 	Route::post('/add-activity', [ActivityController::class, 'create'])->name('add-activity');
+	Route::post('/update-activity/{id}', [ActivityController::class, 'update'])->name('update-activity');
 
 });
 

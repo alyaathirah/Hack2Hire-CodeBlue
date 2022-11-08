@@ -9,13 +9,8 @@
           <div class="dds__card__content">
             <div class="dds__card__header">
               <span class="dds__card__header__text">
-                <h5 class="dds__card__header__title">{{$activity}}Participants List</h5>
+                <h5 class="dds__card__header__title">{{$activity}} Participants List</h5>
               </span>
-              
-              <button type="button" class="dds__button" data-bs-toggle="modal" data-bs-target="#activityModal">
-                <i class="dds__icon dds__icon--accessibility dds__card__header__iconn"></i>
-                &nbsp&nbspAdd New Activity
-              </button>
             </div>
             <div class="dds__card__body mt-3">
               <table id="example" class="display" style="width:100%">
@@ -40,9 +35,9 @@
                   @foreach ($participants as $participant)
                   <tr>
                     <td>{{$participant->firstname}} {{$participant->lastname}}</td>
-                    <td>{{$activity->phone}}</td>
-                    <td>{{$activity->age_category}}</td>
-                    <td>{{$activity->employee_status}}</td>
+                    <td>{{$participant->phone}}</td>
+                    <td>{{$participant->age_category}}</td>
+                    <td>{{$participant->employee_status}}</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -250,6 +245,8 @@
   window.onload=function(){
     const myModalEl = document.getElementById('activityModal')
     myModalEl.addEventListener('show.bs.modal')
+
+    
 }
 
 $(document).ready(function () {
