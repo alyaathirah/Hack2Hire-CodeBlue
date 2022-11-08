@@ -19,6 +19,11 @@
     <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="assets/css/argon-dashboard.css" rel="stylesheet" />
+    <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-reboot.min.css" />
+    <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-fonts.min.css" />
+    <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-icons.min.css" />
+    <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-helpers.min.css" />
+    <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-main.min.css" />
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -47,6 +52,7 @@
     @endauth
 
     <!--   Core JS Files   -->
+    <script src="https://dds.dell.com/components/2.19.1/js/index.min.js"></script>
     <script src="assets/js/core/popper.min.js"></script>
     <script src="assets/js/core/bootstrap.min.js"></script>
     <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
