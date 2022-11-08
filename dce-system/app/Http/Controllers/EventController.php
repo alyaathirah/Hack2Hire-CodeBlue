@@ -39,7 +39,6 @@ class EventController extends Controller
         $post = new Event;
         $post->title = $request->title;
         $post->description = $request->description;
-        // $post->title = $request->input('title');
         $post->save();
         return redirect('event-create');
     }
