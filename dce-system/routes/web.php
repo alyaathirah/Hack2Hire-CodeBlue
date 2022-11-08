@@ -38,10 +38,10 @@ use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TicketController;  
 
-Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
+	Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
-	Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
+	Route::get('/login', [LoginController::class, 'show'])->name('login');
 	Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
 	Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
 	Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
 
-	// Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
+	Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
 	Route::post('/event-create-store', [EventController::class, 'store']);
 	Route::get('/attendance-list', [AttendanceController::class, 'show_list'])->name('show_list');
 
