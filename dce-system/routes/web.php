@@ -37,6 +37,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TicketController;  
+use App\Http\Controllers\NgoController; 
 
 	Route::get('/', function () {return redirect('/login');});
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -58,10 +59,11 @@ use App\Http\Controllers\TicketController;
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/home', [WelcomeController::class, 'index'])->name('home');
-	
+
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
+	Route::get('/ngo-list', [NgoController::class, 'index'])->name('ngo-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
-	Route::post('/register-activity/store', [ActivityController::class, 'store'])->name('register-activity');
+	// Route::post('/register-activity/store', [ActivityController::class, 'store'])->name('register-activity');
 	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
 	Route::get('/admin-activity-participant/{id}', [ActivityController::class, 'showParticipant'])->name('activity-participant-list');
 	Route::get('/edit-activity/{id}', [ActivityController::class, 'editSession'])->name('edit-session');
