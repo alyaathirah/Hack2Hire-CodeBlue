@@ -9,8 +9,6 @@
     <title>
         Argon Dashboard 2 by Creative Tim
     </title>
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
     <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
     <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
@@ -24,6 +22,7 @@
     <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-icons.min.css" />
     <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-helpers.min.css" />
     <link rel="stylesheet" crossorigin href="https://dds.dell.com/components/2.19.1/css/dds-main.min.css" />
+    @stack('css')
 </head>
 
 <body class="{{ $class ?? '' }}">
