@@ -25,7 +25,8 @@ use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
 use App\Http\Controllers\ChangePassword;    
 use App\Http\Controllers\WelcomeController;            
-use App\Http\Controllers\RegisterEventController;        
+use App\Http\Controllers\RegisterEventController;      
+use App\Http\Controllers\RegisterDependantController;        
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -37,6 +38,10 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
+	Route::get('/register-event', [RegisterEventController::class, 'create'])->middleware('guest')->name('register-event');
+	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register-event.perform');
+	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
+	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
