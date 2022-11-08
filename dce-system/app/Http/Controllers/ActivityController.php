@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class WelcomeController extends Controller
+class ActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,8 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $event = DB::table('event')->where('id', '1')->first();
-        $anns = DB::table('announcement')
-        ->orderBy('id', 'desc')
-        ->limit(3)
-        ->get();
-        return view('pages.welcome', ['event' => $event, 'anns' => $anns]);
+        $activities = DB::table('activity')->get();
+        return view('pages.activity-list', ['activities' => $activities]);
     }
 
     /**
@@ -29,7 +25,7 @@ class WelcomeController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -49,9 +45,15 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('pages.floor-plan');
+        // get activity details
+        $activity =  DB::table('activity')->where('id', $id)->first();
+        // get user and dependent details
+        // $users = DB::table('users')->where('id', auth()->user()->id)->get();
+        // return view('pages.register-activity', ['activity' => $activity, 'users' => $users]);
+        $users = null;
+        return view('pages.register-activity', ['activity' => $activity,  'users' => $users]);
     }
 
     /**

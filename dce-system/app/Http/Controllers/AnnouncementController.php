@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class WelcomeController extends Controller
+class AnnouncementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,8 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $event = DB::table('event')->where('id', '1')->first();
-        $anns = DB::table('announcement')
-        ->orderBy('id', 'desc')
-        ->limit(3)
-        ->get();
-        return view('pages.welcome', ['event' => $event, 'anns' => $anns]);
+        $anns = DB::table('announcement')->get();
+        return view('pages.announcement-list', ['anns' => $anns]);
     }
 
     /**
@@ -49,9 +45,9 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        return view('pages.floor-plan');
+        //
     }
 
     /**

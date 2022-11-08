@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     // activity list page
-    if ($('#example').length > 0) {
-        $('#example').DataTable();
+    if ($('#activity-list').length > 0) {
+        $('#activity-list').DataTable();
     }
     
     // activity registration page
