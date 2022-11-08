@@ -1,9 +1,9 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Activity List'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Participants List'])
     
-    <div class="container">
+    <div class="container mt-5">
       <div class="dds__col-12 dds__col--md-6 dds__col--lg-4 dds__mb-3">
         <div class="dds__card">
           <div class="dds__card__content">
@@ -13,7 +13,8 @@
               </span>
             </div>
             <div class="dds__card__body mt-3">
-              <table id="example" class="display" style="width:100%">
+              <div class="table-responsive">
+              <table id="example" class="table display" style="width:100%">
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -42,6 +43,7 @@
                   @endforeach
                 </tbody>
             </table>
+              </div>
             </div>
           </div>
         </div>
@@ -246,7 +248,7 @@
     const myModalEl = document.getElementById('activityModal')
     myModalEl.addEventListener('show.bs.modal')
 
-    
+
 }
 
 $(document).ready(function () {
