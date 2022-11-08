@@ -38,7 +38,7 @@ use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TicketController;  
 
-	Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
+	Route::get('/', function () {return redirect('/login');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 	Route::get('/login', [LoginController::class, 'show'])->name('login');
