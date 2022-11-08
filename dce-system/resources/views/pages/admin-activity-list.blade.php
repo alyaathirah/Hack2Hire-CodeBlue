@@ -31,7 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  {{-- <tr>
                     <td>huihu</td>
                     <td>ASASA</td>
                     <td>ASASA</td>
@@ -39,18 +39,18 @@
                     <td>SASAS</td>
                     <td>sdasad</td>
                     <td>Edit and View</td>
-                  </tr>
-                  {{-- @foreach ($activities as $activity)
+                  </tr> --}}
+                  @foreach ($activities as $activity)
                   <tr>
                     <td>{{$activity->name}}</td>
                     <td>{{$activity->start_time}}</td>
                     <td>{{$activity->end_time}}</td>
                     <td>{{$activity->age_category}}</td>
-                    <td>{{$activity->slot}}</td>
+                    <td>{{$activity->current_slot}}</td>
                     <td>{{$activity->type}}</td>
                     <td>Edit and View</td>
                   </tr>
-                  @endforeach --}}
+                  @endforeach
                 </tbody>
             </table>
             </div>

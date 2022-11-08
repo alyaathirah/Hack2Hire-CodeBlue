@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Activity;
 
 class ActivityController extends Controller
 {
@@ -29,7 +31,7 @@ class ActivityController extends Controller
         $post = new Activity;
         // $post->title = $request->title;
         $post->name = $request->input('name');
-        $post->event = $request->input('event');
+        $post->event_id = $request->input('event');
         $post->description = $request->input('description');
         $post->start_time = $request->input('start_time');
         $post->end_time = $request->input('end_time');
@@ -81,10 +83,7 @@ class ActivityController extends Controller
 
     public function getList()
     {
-        $activities = DB::table('activity')
-                    ->select('name', 'start_time', 'end_time', 'age_category', 'max_slot', 'current_slot', 'type')
-                    ->get();
-
+        $activities = DB::table('activity')->get();
         return view('pages.admin-activity-list', ['activities' => $activities]);
     }
 

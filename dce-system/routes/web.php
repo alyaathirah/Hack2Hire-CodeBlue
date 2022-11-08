@@ -55,6 +55,7 @@ use App\Http\Controllers\TicketController;
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
+	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
@@ -91,8 +92,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/qrcode', [QrCodeController::class, 'index']);
 
 	
-	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
-	Route::post('/add-activity', 'ActivityController@create')->name('add-activity');
+	
+	Route::post('/add-activity', [ActivityController::class, 'create'])->name('add-activity');
 
 });
 
