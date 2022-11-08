@@ -73,6 +73,11 @@ use App\Http\Controllers\TicketController;
 	Route::get('/announcement-create', [AnnouncementController::class, 'index_admin'])->name('announcement-create');
 	Route::post('/register-event-post', [RegisterEventController::class, 'add']);
 
+	Route::get('/qr-scanner', [AttendanceController::class, 'qr_scanner'])->name('qr-scanner');
+	Route::post('/qr-scanner-store', [AttendanceController::class, 'store']);
+	Route::get('/attendance-list', [AttendanceController::class, 'show_list'])->name('attendance-list');
+
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
@@ -86,8 +91,6 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/report/export', [ReportController::class, 'export'])->name('excel');
 
-	
-	Route::get('/qr-scanner', [PageController::class, 'qr_scanner'])->name('qr-scanner');
 	Route::get('/nowhere/{code}', [AttendanceController::class, 'index']);
 	
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
@@ -104,8 +107,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/qrcode', [QrCodeController::class, 'index']);
 
-	
-	
+
 	Route::post('/add-activity', [ActivityController::class, 'create'])->name('add-activity');
 	Route::post('/update-activity/{id}', [ActivityController::class, 'update'])->name('update-activity');
 

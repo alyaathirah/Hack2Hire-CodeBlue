@@ -100,7 +100,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>  
           </div>
           <div class="modal-body">
-            <form data-dds="form" class="dds__form dds__container p-1 mb-0" method="POST" action="{{url('add-activity')}}">
+            <form data-dds="form" class="dds__form dds__container p-1 mb-0" method="POST" action="{{url('announcement-create-post')}}">
               @csrf
               @method('POST')
               <fieldset class="dds__form__section">
