@@ -24,9 +24,18 @@ class ActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-
+        $post = new Activity;
+        // $post->title = $request->title;
+        $post->name = $request->input('name');
+        $post->event = $request->input('event');
+        $post->description = $request->input('description');
+        $post->start_time = $request->input('start_time');
+        $post->end_time = $request->input('end_time');
+        $post->age_category = $request->input('age_category');
+        $post->save();
+        return redirect('admin-activity-list');
     }
 
     /**

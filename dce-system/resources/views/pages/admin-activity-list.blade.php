@@ -31,7 +31,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                  @foreach ($activities as $activity)
+                  <tr>
+                    <td>huihu</td>
+                    <td>ASASA</td>
+                    <td>ASASA</td>
+                    <td>ASAS</td>
+                    <td>SASAS</td>
+                    <td>sdasad</td>
+                    <td>Edit and View</td>
+                  </tr>
+                  {{-- @foreach ($activities as $activity)
                   <tr>
                     <td>{{$activity->name}}</td>
                     <td>{{$activity->start_time}}</td>
@@ -41,7 +50,7 @@
                     <td>{{$activity->type}}</td>
                     <td>Edit and View</td>
                   </tr>
-                  @endforeach
+                  @endforeach --}}
                 </tbody>
             </table>
             </div>
@@ -55,10 +64,12 @@
         <div class="modal-content" style="border-radius: 0.125rem">
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="activityModalLabel">Add New Activity</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>  
           </div>
           <div class="modal-body">
-            <form data-dds="form" class="dds__form dds__container p-1 mb-0">
+            <form data-dds="form" class="dds__form dds__container p-1 mb-0" method="POST" action="{{url('add-activity')}}">
+              @csrf
+              @method('POST')
               <fieldset class="dds__form__section">
                 <legend>Activity Details</legend>
                 <div class="dds__row">
@@ -69,7 +80,7 @@
                         <input
                           type="text"
                           class="dds__input-text"
-                          name="text-input-control-name-545247653"
+                          name="name"
                           id="text-input-control-545247653"
                           required=""
                           aria-labelledby="text-input-label-545247653 text-input-helper-545247653"
@@ -83,12 +94,9 @@
                     <div class="dds__select" data-dds="select">
                       <label id="select-label-730835274" for="select-control-730835274">Event</label>
                       <div class="dds__select__wrapper">
-                        <select id="select-control-730835274" class="dds__select__field" aria-describedby="select-helper-730835274" required="">
+                        <select name="event" id="select-control-730835274" class="dds__select__field" aria-describedby="select-helper-730835274" required="">
                           <option value="" class="dds__select__option--placeholder" selected>Select an option</option>
-                          <option value="content">Content</option>
-                          <option value="design">Design</option>
-                          <option value="engineering">Engineering</option>
-                          <option value="product-management">Product management</option>
+                          <option value="1">Dell Charity Event</option>
                         </select>
                         <small id="select-helper-730835274" class="dds__select__helper"></small>
                         <div id="select-error-730835274" class="dds__invalid-feedback"></div>
@@ -105,7 +113,7 @@
                       <div class="dds__text-area__wrapper">
                         <textarea
                           class="dds__text-area"
-                          name="text-area-control-name-256775854"
+                          name="description"
                           id="text-area-control-256775854"
                           data-maxlength="null"
                           aria-required="true"
@@ -126,7 +134,7 @@
                         <input
                           type="time"
                           class="dds__input-text"
-                          name="text-input-control-name-943990465"
+                          name="start-time"
                           id="text-input-control-943990465"
                           aria-labelledby="text-input-label-943990465 text-input-helper-943990465"
                         />
@@ -142,7 +150,7 @@
                         <input
                           type="time"
                           class="dds__input-text"
-                          name="text-input-control-name-943990465"
+                          name="end-time"
                           id="text-input-control-943990465"
                           aria-labelledby="text-input-label-943990465 text-input-helper-943990465"
                         />
@@ -161,7 +169,7 @@
                           type="number"
                           class="dds__input-text"
                           maxlength="256"
-                          name="inputmask-861793963"
+                          name="slot"
                           id="inputmask-861793963"
                           required
                           aria-labelledby="inputmask-label-361872271 inputmask-helper-154907673"
@@ -174,12 +182,10 @@
                     <div class="dds__select" data-dds="select">
                       <label id="select-label-730835274" for="select-control-730835274">Age Category</label>
                       <div class="dds__select__wrapper">
-                        <select id="select-control-730835274" class="dds__select__field" aria-describedby="select-helper-730835274" required="">
+                        <select name="age-category" id="select-control-730835274" class="dds__select__field" aria-describedby="select-helper-730835274" required="">
                           <option value="" class="dds__select__option--placeholder" selected>Select an option</option>
-                          <option value="content">Content</option>
-                          <option value="design">Design</option>
-                          <option value="engineering">Engineering</option>
-                          <option value="product-management">Product management</option>
+                          <option value="adult">Adult</option>
+                          <option value="child">Child</option>
                         </select>
                         <small id="select-helper-730835274" class="dds__select__helper"></small>
                         <div id="select-error-730835274" class="dds__invalid-feedback"></div>
@@ -189,7 +195,7 @@
                 </div>
                 <div class="dds__row">
                   <div class="dds__col--1">
-                    <fieldset class="dds__fieldset dds__fieldset--inline dds__radio-button-group" role="radiogroup">
+                    <fieldset name="radio" class="dds__fieldset dds__fieldset--inline dds__radio-button-group" role="radiogroup">
                       <legend>Type (Open/Close)</legend>
             
                       <div class="dds__radio-button">
@@ -198,7 +204,7 @@
                           type="radio"
                           name="name-537973720"
                           id="radio-button-control-515094238"
-                          value="standardopt1"
+                          value="Open"
                         />
                         <label class="dds__radio-button__label" id="radio-button-label-515094238" for="radio-button-control-515094238">
                           Open
@@ -210,7 +216,7 @@
                           type="radio"
                           name="name-537973720"
                           id="radio-button-control-760454775"
-                          value="standardopt1"
+                          value="Close"
                         />
                         <label class="dds__radio-button__label" id="radio-button-label-760454775" for="radio-button-control-760454775">
                           Close
