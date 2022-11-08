@@ -12,7 +12,12 @@
 
 <div class="container">
     <div class="page__title"> Activity List </div>
-    
+    @if (isset($success))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ $success }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <table id="activity-list" class="display" style="width:100%">
         <thead>
             <tr>

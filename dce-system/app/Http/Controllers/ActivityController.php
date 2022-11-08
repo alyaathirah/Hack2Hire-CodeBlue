@@ -40,14 +40,16 @@ class ActivityController extends Controller
         //     'user_id' => 'required',
         //     'activity_id' => 'required',
         // ]);
+        $p = explode(",", $request->input('participant_id'));
+        foreach ($p as $part_id) {
+            DB::table('activity_participant')->insert([
+                'participant_id' => $part_id,
+                'activity_id' => $request->activity_id,
+            ]);
+        }
 
-        DB::table('activity_participant')->insert([
-            'participant_id' => $request->user_id,
-            'activity_id' => $request->activity_id,
-        ]);
-
-        return redirect()->route('activity-list.index')
-                        ->with('success','Activity registered successfully');
+        $activities = DB::table('activity')->get();
+        return view('pages.activity-list', ['activities' => $activities, 'success' => 'You have successfully registered for the activity.']);
     }
 
     /**

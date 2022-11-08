@@ -51,19 +51,24 @@ use App\Http\Controllers\TicketController;
 	Route::get('/register-event', [RegisterEventController::class, 'create'])->middleware('guest')->name('register-event');
 	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
 	Route::post('/register-event', [RegisterDependantController::class, 'store'])->middleware('guest')->name('register-event.perform');
+	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
+	Route::get('/register-event', [RegisterEventController::class, 'store'])->name('register-event');
+	// Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
+	// Route::post('/register-event', [RegisterDependantController::class, 'store'])->name('register-event.perform');
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
+	Route::post('/register-activity/store', [ActivityController::class, 'store'])->name('register-activity');
 	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
 	Route::get('/admin-activity-participant/{id}', [ActivityController::class, 'showParticipant'])->name('activity-participant-list');
 	Route::get('/edit-activity/{id}', [ActivityController::class, 'editSession'])->name('edit-session');
 	
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
-	Route::get('/payment-page', [PaymentPageController::class, 'show'])->name('payment-page');
+	// Route::get('/payment-page', [PaymentPageController::class, 'show'])->name('payment-page');
 	Route::get('/my-ticket', [TicketController::class, 'index'])->name('my-ticket');
 	Route::get('/announcement-create', [AnnouncementController::class, 'index_admin'])->name('announcement-create');
 
@@ -86,6 +91,8 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
+	Route::get('/payment-page', [RegisterEventController::class, 'show']);
+	Route::post('/register-event-post', [RegisterEventController::class, 'add']);
 
 	Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
 	Route::post('/event-create-store', [EventController::class, 'store']);
