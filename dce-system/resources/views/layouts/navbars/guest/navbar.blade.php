@@ -6,7 +6,7 @@
                 class="navbar navbar-expand-lg blur top-0 z-index-3 shadow position-absolute py-2 start-0 end-0">
                 <div class="container-fluid">
                     <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 " href="{{ route('home') }}">
-                        Dell Charity Engage
+                        <img src="./img/dell-logo.png" style='width:170px; height:auto' class="navbar-brand-img h-100" alt="main_logo">
                     </a>
                     <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -19,18 +19,15 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navigation">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item">
-                                <a class="nav-link me-2" href="{{ route('register') }}">
-                                    <i class="fas fa-user-circle opacity-6 text-dark me-1"></i>
-                                    Sign Up
-                                </a>
-                            </li>
+
+                            @if (auth()->user() == null)
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('login') }}">
                                     <i class="fas fa-key opacity-6 text-dark me-1"></i>
                                     Sign In
                                 </a>
                             </li>
+                            @endif
                             <li class="nav-item">
                                 <a class="nav-link me-2" href="{{ route('my-ticket') }}">
                                     <i class="fas fa-solid fa-user opacity-6 text-dark me-1"></i>

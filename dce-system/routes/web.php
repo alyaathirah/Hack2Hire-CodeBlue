@@ -51,7 +51,7 @@ use App\Http\Controllers\TicketController;
 	Route::get('/register-event', [RegisterEventController::class, 'create'])->middleware('guest')->name('register-event');
 	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
 	Route::post('/register-event', [RegisterDependantController::class, 'store'])->middleware('guest')->name('register-event.perform');
-	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
+	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
