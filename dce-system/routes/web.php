@@ -38,7 +38,7 @@ use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\TicketController;  
 
-	Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
+	Route::get('/', function () {return redirect('/login');});
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
 	Route::get('/login', [LoginController::class, 'show'])->name('login');
@@ -49,15 +49,15 @@ use App\Http\Controllers\TicketController;
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/register-event', [RegisterEventController::class, 'create'])->middleware('guest')->name('register-event');
-	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
-	Route::post('/register-event', [RegisterDependantController::class, 'store'])->middleware('guest')->name('register-event.perform');
+	// Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
+	// Route::post('/register-event', [RegisterDependantController::class, 'store'])->middleware('guest')->name('register-event.perform');
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
 	Route::get('/register-event', [RegisterEventController::class, 'store'])->name('register-event');
 	// Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
 	// Route::post('/register-event', [RegisterDependantController::class, 'store'])->name('register-event.perform');
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
-	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
+	Route::get('/home', [WelcomeController::class, 'index'])->name('home');
 	
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');

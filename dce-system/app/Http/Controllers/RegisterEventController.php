@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Http\Requests\RegisterRequest;
 use App\Models\Participant;
+use Illuminate\Http\Request;
 
 class RegisterEventController extends Controller
 {
