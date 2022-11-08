@@ -13,14 +13,21 @@ $(document).ready(function () {
 
     // activity registration page
    
+    const participant_ids = [];
+
     if($('#append').length > 0){ 
         $('#append').on('click', function () {
             var text = $('#participant option:selected').text();
+            participant_ids.push($('#participant').val());
+            $('#participant_id').val(participant_ids);
             var li = '<li>' + text +  '<input type="hidden" name="participant_name" value="'+text+'"/><i class="dds__icon--close-x remove-btn"></i></li>';
             $('#participant_list').append(li);
             $('#participant').val('');
+            console.log(participant_ids);
         });
       
+        
+
         $(document).on('click', 'li>.remove-btn', function (event){
             var _this =$(this);
         _this.closest('li').remove();
@@ -59,5 +66,7 @@ $(document).ready(function () {
 
     const element = document.getElementById("unique-id");
     DDS.Tabs(element);
+
+    
 
 });

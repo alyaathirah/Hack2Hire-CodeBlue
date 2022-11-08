@@ -15,7 +15,7 @@
    
     <div class="dds__col-12 dds__col--md-6 dds__col--lg-4 dds__mb-3">
         <div class="dds__card">
-            <form action="{{ url('register-activity/store') }}" method="GET">
+            <form action="{{ url('register-activity/store') }}" method="POST">
                  @csrf
             <div class="dds__card__content">
                 <div class="dds__card__header">
@@ -44,6 +44,7 @@
                                     id="append">Add</button>
                             </div>
                             <input type="hidden" name="activity_id" value="{{$activity->id}}" />
+                            <input type="hidden" name="participant_id" id="participant_id" value=""/>
                         </div>
 
                         <ul id="participant_list" class="dds__list">
