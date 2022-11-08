@@ -29,7 +29,8 @@ use App\Http\Controllers\RegisterEventController;
 use App\Http\Controllers\RegisterDependantController;        
 use App\Http\Controllers\ReportController;               
 use App\Http\Controllers\ActivityController;   
-use App\Http\Controllers\AnnouncementController;          
+use App\Http\Controllers\AnnouncementController;   
+use App\Http\Controllers\PaymentPageController;          
         
 use App\Http\Controllers\AttendanceController;      
 use App\Http\Controllers\EventController;  
@@ -47,7 +48,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
 	Route::get('/register-event', [RegisterEventController::class, 'create'])->middleware('guest')->name('register-event');
-	Route::get('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register-event.store');
+	Route::post('/register-event', [RegisterEventController::class, 'store'])->middleware('guest')->name('register2');
 	Route::post('/register-event', [RegisterDependantController::class, 'store'])->middleware('guest')->name('register-event.perform');
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->middleware('guest')->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
@@ -56,6 +57,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
+	Route::get('/payment-page', [PaymentPageController::class, 'show'])->name('payment-page');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
