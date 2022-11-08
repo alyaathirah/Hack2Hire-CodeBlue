@@ -27,6 +27,9 @@ use App\Http\Controllers\ChangePassword;
 use App\Http\Controllers\WelcomeController;             
 use App\Http\Controllers\ActivityController;   
 use App\Http\Controllers\AnnouncementController;          
+        
+use App\Http\Controllers\RegisterEventController;   
+use App\Http\Controllers\AttendanceController;       
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -54,4 +57,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static'); 
 	Route::get('/{page}', [PageController::class, 'index'])->name('page');
 	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+	
+	Route::get('/qr-scanner', [PageController::class, 'qr_scanner'])->name('qr-scanner');
+	Route::get('/nowhere/{code}', [AttendanceController::class, 'index']);
+	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
+	Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 });

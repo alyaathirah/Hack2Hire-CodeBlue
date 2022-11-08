@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Announcement;
 
 class AnnouncementController extends Controller
 {
@@ -23,9 +24,18 @@ class AnnouncementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function create_page(){
+        return view('pages.announcement-create');
+    }
+    public function create(Request $request)
     {
-        //
+        $post = new Announcement;
+        $post->title = $request->title;
+        $post->description = $request->description;
+        // $post->image = $request->image;
+        $post->save();
+        return redirect('announcement-create');
     }
 
     /**
