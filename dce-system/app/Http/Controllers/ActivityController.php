@@ -26,19 +26,7 @@ class ActivityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
-    {
-        $post = new Activity;
-        // $post->title = $request->title;
-        $post->name = $request->input('name');
-        $post->event_id = $request->input('event');
-        $post->description = $request->input('description');
-        $post->start_time = $request->input('start_time');
-        $post->end_time = $request->input('end_time');
-        $post->age_category = $request->input('age_category');
-        $post->save();
-        return redirect('admin-activity-list');
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -81,10 +69,49 @@ class ActivityController extends Controller
         return view('pages.register-activity', ['activity' => $activity,  'user' => $user, 'dependents' => $dependents]);
     }
 
+    // ADMIN
     public function getList()
     {
         $activities = DB::table('activity')->get();
         return view('pages.admin-activity-list', ['activities' => $activities]);
+    }
+
+    public function create(Request $request)
+    {
+        $post = new Activity;
+        $post->name = $request->input('name');
+        $post->event_id = $request->input('event');
+        $post->description = $request->input('description');
+        $post->start_time = $request->input('start-time');
+        $post->end_time = $request->input('end-time');
+        $post->age_category = $request->input('age-category');
+        $post->save();
+        return redirect('admin-activity-list');
+    }
+
+    public function showParticipant(Request $request, $id)
+    {
+        $participants =  DB::table('participant')
+                            ->select('firstname', 'lastname', 'phone','age_category', 'employee_status')
+                            ->leftjoin('activity_participant', 'activity_participant.participant_id', '=', 'participant.id')
+                            ->where('activity_participant.activity_id', $id)
+                            ->get();
+
+        $activity = DB::table('activity')
+                            ->select('name')
+                            ->where('id', $id)
+                            ->get();
+
+        return view('pages.admin-activity-participant', ['participants' => $participants, 'activity' => $activity]);
+    }
+
+    public function editSession($id)
+    {
+        $activityData = DB::table('activity')
+                            ->where('id', $id)
+                            ->get();
+
+        return redirect('admin-activity-list')->with('edit-activity', $activityData);
     }
 
 

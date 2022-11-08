@@ -18,6 +18,16 @@ class AnnouncementController extends Controller
         $anns = DB::table('announcement')->get();
         return view('pages.announcement-list', ['anns' => $anns]);
     }
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index_admin()
+    {
+        $anns = DB::table('announcement')->get();
+        return view('pages.announcement-create', ['anns' => $anns]);
+    }
 
     /**
      * Show the form for creating a new resource.

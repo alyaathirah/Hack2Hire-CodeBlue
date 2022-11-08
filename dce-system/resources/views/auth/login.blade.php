@@ -67,9 +67,9 @@
                         </div>
                     </div>
                     <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
-                        <div class="container position-relative bg-gradient-primary h-100 d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg'); background-size: cover;">
+                        <div class="container position-relative bg-gradient-primary h-100 d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('./img/volun.jpg'); background-size: cover; background-position: center;">
                             <span class="mask bg-gradient-primary opacity-6"></span>
-                            <h3 class="mt-5 text-white font-weight-bolder position-relative">Dell Charity Engage</h3>
+                            <h2 class="mt-5 text-white font-weight-bolder position-relative">Dell Charity Engage</h2>
                             <p class="mx-5 text-white position-relative">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                         </div>
                     </div>

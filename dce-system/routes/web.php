@@ -54,13 +54,18 @@ use App\Http\Controllers\TicketController;
 	Route::get('/register-dependant', [RegisterDependantController::class, 'create'])->name('register-dependant');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
 	Route::get('/welcome', [WelcomeController::class, 'index'])->name('welcome');
+	
 	Route::get('/activity-list', [ActivityController::class, 'index'])->name('activity-list');
-	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
 	Route::get('/register-activity/{id}', [ActivityController::class, 'show'])->name('register-activity');
+	Route::get('/admin-activity-list', [ActivityController::class, 'getList'])->name('admin-activity-list');
+	Route::get('/activity-participant-list/{id}', [ActivityController::class, 'showParticipant'])->name('activity-participant-list');
+	Route::get('/edit-activity/{id}', [ActivityController::class, 'editSession'])->name('edit-session');
+	
 	Route::get('/announcement', [AnnouncementController::class, 'index'])->name('announcement');
 	Route::get('/floor-plan', [WelcomeController::class, 'show'])->name('floor-plan');
 	// Route::get('/payment-page', [PaymentPageController::class, 'show'])->name('payment-page');
 	Route::get('/my-ticket', [TicketController::class, 'index'])->name('my-ticket');
+	Route::get('/announcement-create', [AnnouncementController::class, 'index_admin'])->name('announcement-create');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
@@ -78,7 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
 	
 	Route::get('/qr-scanner', [PageController::class, 'qr_scanner'])->name('qr-scanner');
 	Route::get('/nowhere/{code}', [AttendanceController::class, 'index']);
-	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
+	
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
 	Route::get('/payment-page', [RegisterEventController::class, 'show']);
