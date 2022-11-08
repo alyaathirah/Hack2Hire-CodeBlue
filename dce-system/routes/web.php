@@ -30,7 +30,8 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnnouncementController;          
         
 use App\Http\Controllers\RegisterEventController;   
-use App\Http\Controllers\AttendanceController;       
+use App\Http\Controllers\AttendanceController;      
+use App\Http\Controllers\EventController;  
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
 	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
@@ -67,6 +68,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/announcement-create', [AnnouncementController::class, 'create_page'])->name('announcement-create');
 	// Route::post('/announcement-create-post', [AnnouncementController::class, 'create']);
 	Route::post('/announcement-create-post', [App\Http\Controllers\AnnouncementController::class, 'create']);
+	Route::get('/event-create', [EventController::class, 'create_page'])->name('event-create');
+	Route::post('/event-create-store', [EventController::class, 'store']);
 });
 
 

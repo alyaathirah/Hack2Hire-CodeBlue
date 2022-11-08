@@ -6,7 +6,7 @@
     <?php
         $title = $description = "";
     ?>
-    <form class="dds__form dds__container" method="POST" action="{{url('announcement-create-post')}}">
+    <form class="dds__form dds__container" method="POST" action="{{url('event-create-store')}}">
     @csrf
         <fieldset class="dds__form__section">
             <legend>Create new announcement</legend>
@@ -21,7 +21,6 @@
                     name="title"
                     id="text-input-control-804476461"
                     required=""
-                    
                     value="<?php echo $title;?>"
                     />
 
