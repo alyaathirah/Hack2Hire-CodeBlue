@@ -86,8 +86,29 @@ class ActivityController extends Controller
         $post->description = $request->input('description');
         $post->start_time = $request->input('start-time');
         $post->end_time = $request->input('end-time');
+        $post->max_slot = $request->input('slot');
+        $post->type = $request->input('type');
         $post->age_category = $request->input('age-category');
         $post->save();
+        return redirect('admin-activity-list');
+    }
+
+    public function update (Request $request, $id)
+    {
+        $name = $request->input('name');
+        $event = $request->input('event');
+        $description = $request->input('description');
+        $start_time = $request->input('start-time');
+        $end_time = $request->input('end-time');
+        $max_slot = $request->input('slot');
+        $type = $request->input('type');
+        $age_category = $request->input('age-category');
+        
+        $updateData = array('name' => $name, 'event_id' => $event, 'start_time' => $start_time, 'end_time' => $end_time, 'max_slot' => $max_slot, 'type' => $type,'age_category' => $age_category);
+
+            DB::table('activity')
+                -> where('id', $id)
+                -> update($updateData);
         return redirect('admin-activity-list');
     }
 
@@ -104,7 +125,7 @@ class ActivityController extends Controller
                             ->where('id', $id)
                             ->get();
 
-        return view('pages.admin-activity-participant', ['participants' => $participants, 'activity' => $activity]);
+        return view('pages.admin-activity-participant', ['participants' => $participants, 'activity' => $activity[0]->name]);
     }
 
     public function editSession($id)
@@ -113,7 +134,7 @@ class ActivityController extends Controller
                             ->where('id', $id)
                             ->get();
 
-        return redirect('admin-activity-list')->with('edit-activity', $activityData);
+        return redirect('admin-activity-list')->with('edit-activity', $activityData[0]);
     }
 
 
@@ -135,10 +156,7 @@ class ActivityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    
 
     /**
      * Remove the specified resource from storage.
