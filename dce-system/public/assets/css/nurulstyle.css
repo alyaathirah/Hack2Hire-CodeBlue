@@ -1,0 +1,110 @@
+hr:not([size]) {
+  height: 0.5px;
+  font-weight: 200;
+}
+
+header img {
+  width: 100vw;
+  height: 500px;
+  object-fit: cover;
+  filter: brightness(.4);
+}
+  
+section {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  color: #fff !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+a:hover {
+  color: #fff;
+}
+
+a:visited, .dds__link:visited {
+  color: #fff;
+}
+
+.section__news,
+.section__gallery {
+  padding: 1em;
+}
+
+.page__title {
+  font-size: 2em;
+  font-weight: 500;
+  margin: 1em 0 0.5em 0;
+}
+
+#page__title {
+  font-size: 2em;
+  font-weight: 500;
+  margin: 1em 0 0.5em 0;
+}
+
+.title {
+  font-size: 3em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  line-height: normal;
+}
+
+.subtitle {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.paragraph {
+  margin-bottom: 2em;
+}
+
+.slot__span {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  header img {
+    height: 500px;
+  }
+  
+  section {
+    top: 10%;
+    left: 10%;
+  }
+}
+  
+.date__container {
+  background-color: #f5f6f7;
+}
+/* Bootstrap overriding */
+
+.form-select {
+  border-radius: 0.125rem;
+  border: 0.0625rem solid #7e7e7e;
+}
+
+.form-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff,0 0 0 4px #00468b;
+  border-radius: 2px;
+  border-color: #0672cb;
+}
+
+i {
+  font-style: normal;
+}
+
+.text_truncate_threeline {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+          line-clamp: 3; 
+  -webkit-box-orient: vertical;
+}
