@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Edit Announcement'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Event'])
     <div class="dds__card">
     <?php
         $title = $description = "";
