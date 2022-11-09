@@ -1,7 +1,7 @@
 @extends('layouts.app', ['class' => 'g-sidenav-show bg-gray-100'])
 
 @section('content')
-    @include('layouts.navbars.auth.topnav', ['title' => 'Activity List'])
+    @include('layouts.navbars.auth.topnav', ['title' => 'Attendance List'])
     
     <div class="container">
       <div class="dds__col-12 dds__col--md-6 dds__col--lg-4 dds__mb-3">
@@ -9,7 +9,7 @@
           <div class="dds__card__content">
             <div class="dds__card__header">
               <span class="dds__card__header__text">
-                <h5 class="dds__card__header__title">Activity List</h5>
+                <h5 class="dds__card__header__title">Attendance List</h5>
               </span>
               
             </div>
@@ -57,7 +57,7 @@
 <script src="assets/js/nurulscript.js"></script>
 <script>
   window.onload=function(){
-    const myModalEl = document.getElementById('activityModal')
+    const myModalEl = document.getElementById('attendanceModal')
     myModalEl.addEventListener('show.bs.modal')
 }
 

@@ -47,6 +47,9 @@
             } else if ($day == 7) {
                 $day = "SUNDAY";
             }
+            else {
+              $day = "WEDNESDAY";
+            }
 
         ?>
                 <tr>    

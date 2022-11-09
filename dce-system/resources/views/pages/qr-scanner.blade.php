@@ -5,10 +5,11 @@
     <div class="card shadow-lg mx-4 card-profile-bottom">
     <div class="card-body p-3">
         <div id="app">
-            <div class="video-container">
-                <video class="video" id="preview"></video>
-            </div>
+            
             <div class="sidebar">
+                <div class="video-container">
+                    <video class="video" id="preview"></video>
+                </div>
                 <ul v-if="scans.length === 0">
                     <p class="empty">No scans found</p>
                 </ul>
